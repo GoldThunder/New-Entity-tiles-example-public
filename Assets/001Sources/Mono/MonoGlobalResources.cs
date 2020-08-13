@@ -1,18 +1,34 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Leopotam.Ecs;
 using UnityEngine;
 
 public class MonoGlobalResources : MonoBehaviour
 {
+
+    public EcsEntity playerEntity;
+    
+    public static MonoGlobalResources Singleton;
+    
     // Start is called before the first frame update
     void Start()
     {
-        
+        MakeSingleton();
+        gameObject.AddComponent<MonoTestEmitter>();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void MakeSingleton()
     {
-        
+        if (Singleton != null)
+        {
+            Destroy(this);
+        }
+        else
+        {
+            Singleton = this;
+        }
     }
+    
+    
+    
 }
