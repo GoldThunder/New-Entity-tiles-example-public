@@ -7,6 +7,17 @@ public class MonoGlobalResources : MonoBehaviour
 {
 
     public EcsEntity playerEntity;
+
+    public List<EcsEntity> PlayerFactionUnitsList;
+    public List<EcsEntity> MachineFactionUnitsList;
+
+    public EcsEntity MainGameGrid;
+
+
+
+
+    public GameObject TilePrefab;
+    public EcsEntity MainGameCanvas;
     
     public static MonoGlobalResources Singleton;
     

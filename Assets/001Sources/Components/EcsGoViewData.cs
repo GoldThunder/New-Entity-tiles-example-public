@@ -4,10 +4,10 @@ using UnityEngine;
 using Object = UnityEngine.Object;
 
 namespace Client {
-    struct EcsGoviewData : IEcsAutoReset<EcsGoviewData> {
+    struct EcsGoViewData : IEcsAutoReset<EcsGoViewData> {
         // add your data here.
         public GameObject Value;
-        public void AutoReset(ref EcsGoviewData c)
+        public void AutoReset(ref EcsGoViewData c)
         {
             if (c.Value!=null)
             {

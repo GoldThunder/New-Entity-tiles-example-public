@@ -1,10 +1,13 @@
+using _001Sources.Systems.Mono;
 using Leopotam.Ecs;
 using UnityEngine;
 
 namespace Client {
     sealed class EcsController : MonoBehaviour {
-        EcsWorld _world;
+        public EcsWorld _world;
         EcsSystems _systems;
+
+        public static EcsController Singleton;
 
         void Start () {
             // void can be switched to IEnumerator for support coroutines.
@@ -19,7 +22,19 @@ namespace Client {
                 // register your systems here, for example:
                 // .Add (new TestSystem1 ())
                 // .Add (new TestSystem2 ())
+                .Add(new EcsPairedCreationMonoEcsSystem())
                 
+                
+                .Add(new  EcsCanvasRegistrationSystem())
+                
+                .Add(new EcsGoViewInitReqProcSystem())
+                .Add(new GoViewEcsMonoPairingSystem())
+                .Add(new GoViewRenamingReqProcSystem())
+                
+                .Add(new EcsCreateGridSystem())
+                .Add(new EcsCreateTileSystem())
+                
+                .Add(new EcsDisplayTileIndexSystem())
                 // register one-frame components (order is important), for example:
                 // .OneFrame<TestComponent1> ()
                 // .OneFrame<TestComponent2> ()
@@ -28,6 +43,20 @@ namespace Client {
                 // .Inject (new CameraService ())
                 // .Inject (new NavMeshSupport ())
                 .Init ();
+
+            MakeSingleton();
+        }
+
+        private void MakeSingleton()
+        {
+            if (Singleton != null)
+            {
+                Destroy(this);
+            }
+            else
+            {
+                Singleton = this;
+            }
         }
 
         void Update () {

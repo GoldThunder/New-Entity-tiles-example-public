@@ -4,18 +4,18 @@ using Client;
 using Leopotam.Ecs;
 using UnityEngine;
 
-public class MonoTestEmitter : MonoBehaviour
+public class MonoCanvasRegistration : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
     {
-        //imnage offset is 100
-
         var _world = EcsController.Singleton._world;
+
         var e = _world.NewEntity();
-        ref var reqdata = ref e.Get<EcsCreateGridReq>();
-        reqdata.ValueDesiredColumns = 5;
-        reqdata.ValueDesiredRows = 5;
+        e.Get<EcsGameCanvasRegistrationReq>();
+        ref var newviewdata = ref e.Get<EcsGoViewData>();
+        newviewdata.Value = gameObject;
 
     }
+
 }

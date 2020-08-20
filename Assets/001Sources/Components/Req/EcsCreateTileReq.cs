@@ -1,5 +1,5 @@
 namespace Client {
-    struct EcsTileComponentData {
+    struct EcsCreateTileReq {
         // add your data here.
     }
 }

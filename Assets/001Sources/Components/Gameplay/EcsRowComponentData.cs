@@ -1,5 +1,5 @@
 namespace Client {
-    struct EcsGridComponentData {
+    struct EcsRowComponentData {
         // add your data here.
     }
 }
